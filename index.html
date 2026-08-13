@@ -334,9 +334,6 @@ footer{padding:46px 0 60px;border-top:1px solid rgba(127,179,255,.12);margin-top
         <!-- PLACEHOLDER: E-Mail wird aus dem CONTACT-Objekt unten im Script gesetzt -->
         <a class="btn btn-primary" data-contact="mailto" href="#kontakt"
            data-de="Tauschen wir uns aus" data-en="Let us talk">Tauschen wir uns aus</a>
-        <!-- PLACEHOLDER: CV-Datei -->
-        <a class="btn btn-ghost" data-contact="cv" href="#"
-           data-de="CV ansehen" data-en="View CV">CV ansehen</a>
       </div>
     </div>
 
@@ -648,7 +645,6 @@ footer{padding:46px 0 60px;border-top:1px solid rgba(127,179,255,.12);margin-top
       <!-- PLACEHOLDERS: Werte unten im Script im CONTACT-Objekt eintragen -->
       <div class="contact-grid">
         <a class="cc" data-contact="mail" href="#"><small>E-Mail</small><span></span></a>
-        <a class="cc" data-contact="phone" href="#"><small data-de="Telefon" data-en="Phone">Telefon</small><span></span></a>
         <a class="cc" data-contact="linkedin" href="#"><small>LinkedIn</small><span></span></a>
         <a class="cc" data-contact="location" href="#"><small data-de="Standort" data-en="Location">Standort</small><span></span></a>
       </div>
@@ -669,12 +665,10 @@ footer{padding:46px 0 60px;border-top:1px solid rgba(127,179,255,.12);margin-top
    ============================================================ */
 const CONTACT = {
   name:     "Liana Soliman",                       // Vor- und Nachname
-  mail:     "vorname.nachname@example.com",  // PLACEHOLDER
-  phone:    "+41 00 000 00 00",              // PLACEHOLDER
-  linkedin: "linkedin.com/in/DEIN-PROFIL",   // PLACEHOLDER (ohne https://)
+  mail:     "liana.soliman@protonmail.com",  // PLACEHOLDER
+  linkedin: "linkedin.com/in/liana-soliman/",   // PLACEHOLDER (ohne https://)
   location: "Zürich, Schweiz",               // PLACEHOLDER
-  cv:       "cv.pdf",                        // PLACEHOLDER: PDF neben index.html legen
-  photo:    "photo.jpg"                      // PLACEHOLDER: Bild neben index.html legen
+  photo:    "LS_portrait.jpg"                      // PLACEHOLDER: Bild neben index.html legen
 };
 
 /* ============================================================
@@ -691,12 +685,10 @@ const CONTACT = {
     });
   };
   set('mail', CONTACT.mail, 'mailto:'+CONTACT.mail);
-  set('phone', CONTACT.phone, 'tel:'+CONTACT.phone.replace(/\s/g,''));
   set('linkedin', CONTACT.linkedin, 'https://'+CONTACT.linkedin.replace(/^https?:\/\//,''));
   set('location', CONTACT.location, null);
   set('footername', CONTACT.name.toUpperCase(), null);
   document.querySelectorAll('[data-contact="mailto"]').forEach(el=>el.setAttribute('href','mailto:'+CONTACT.mail));
-  document.querySelectorAll('[data-contact="cv"]').forEach(el=>{el.setAttribute('href',CONTACT.cv);el.setAttribute('target','_blank');el.setAttribute('rel','noopener')});
 
   // Foto laden, falls vorhanden — sonst bleibt der Platzhalter stehen
   const fig = document.querySelector('.portrait');
