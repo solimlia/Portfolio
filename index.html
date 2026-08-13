@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liana Soliman — Strategy, Growth &amp; Tech</title>
+<meta name="description" content="Strategy and growth professional bridging technology strategy and operating execution. MBA Finance and Data Science. 60+ client mandates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --navy-900:#070C1C;
+  --navy-800:#0B1229;
+  --navy-700:#101A3A;
+  --navy-600:#16244F;
+  --blue-500:#2E6BFF;
+  --blue-400:#4C8CFF;
+  --blue-300:#7FB3FF;
+  --cyan-300:#5FE0FF;
+  --ice:#E9EFFA;
+  --muted:#94A6CC;
+  --line:rgba(127,179,255,.22);
+
+  --f-display:'Space Grotesk',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+
+  --shell:min(1160px,92vw);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--navy-800);
+  color:var(--ice);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+.shell{width:var(--shell);margin-inline:auto}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(7,12,28,.72);
+  border-bottom:1px solid rgba(127,179,255,.12);
+}
+.nav-in{display:flex;align-items:center;gap:24px;height:66px}
+.mark{font-family:var(--f-display);font-weight:700;letter-spacing:.02em;font-size:17px;text-decoration:none}
+.mark span{color:var(--blue-300)}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.nav-links a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--ice)}
+
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-family:var(--f-mono);font-size:12px}
+.lang button{
+  background:none;border:0;color:var(--muted);padding:7px 13px;cursor:pointer;
+  font:inherit;letter-spacing:.08em;transition:.2s;
+}
+.lang button[aria-pressed="true"]{background:var(--blue-500);color:#fff}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;padding:96px 0 72px;overflow:hidden}
+.beams{position:absolute;inset:-20% -10% auto -10%;height:150%;z-index:0;pointer-events:none}
+.beams svg{width:100%;height:100%;display:block;opacity:.85}
+.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:56px;align-items:center}
+
+.eyebrow{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blue-300);display:flex;align-items:center;gap:12px;margin-bottom:26px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--blue-400)}
+
+h1{font-size:clamp(38px,5.4vw,64px);font-weight:700;letter-spacing:-.03em}
+h1 .accent{
+  background:linear-gradient(100deg,var(--blue-300),var(--cyan-300));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{margin-top:26px;max-width:56ch;color:#C6D4EE;font-size:17.5px}
+.hero-role{
+  margin-top:14px;font-family:var(--f-mono);font-size:13px;color:var(--muted);letter-spacing:.04em;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  padding:13px 24px;border-radius:8px;font-size:14.5px;font-weight:500;
+  font-family:var(--f-display);transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 10px 30px -12px rgba(46,107,255,.9)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(46,107,255,1)}
+.btn-ghost{border:1px solid var(--line);color:var(--ice)}
+.btn-ghost:hover{background:rgba(127,179,255,.08);transform:translateY(-2px)}
+
+/* photo placeholder */
+.portrait{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(160deg,var(--navy-600),var(--navy-900));display:grid;place-items:center;text-align:center}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .ph{padding:20px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--muted);line-height:1.9}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(46,107,255,.28),transparent 55%);pointer-events:none}
+
+/* ============================================================
+   METRICS
+   ============================================================ */
+.metrics{border-block:1px solid rgba(127,179,255,.14);background:rgba(16,26,58,.45)}
+.metrics-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.metric{padding:32px 26px;border-left:1px solid rgba(127,179,255,.12)}
+.metric:first-child{border-left:0}
+.metric b{display:block;font-family:var(--f-display);font-size:clamp(28px,3.4vw,40px);font-weight:700;color:#fff;letter-spacing:-.02em}
+.metric span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section{padding:92px 0}
+.sec-head{margin-bottom:44px;max-width:70ch}
+.sec-head h2{
+  font-size:14px;font-family:var(--f-mono);font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:#fff;
+}
+.rule{height:1px;background:linear-gradient(90deg,var(--blue-400),rgba(127,179,255,0));width:240px;margin:14px 0 26px}
+.lede{font-size:19px;color:#C6D4EE;max-width:64ch}
+.lede + .lede{margin-top:16px}
+
+/* competence cards */
+.grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+  border:1px solid rgba(127,179,255,.16);border-radius:12px;padding:28px;
+  background:linear-gradient(165deg,rgba(22,36,79,.6),rgba(11,18,41,.6));
+  transition:border-color .25s,transform .25s;
+}
+.card:hover{border-color:rgba(127,179,255,.42);transform:translateY(-3px)}
+.card h3{font-size:16.5px;color:var(--blue-300);margin-bottom:16px;font-weight:600}
+.card li{position:relative;padding-left:20px;margin-bottom:11px;font-size:15px;color:#CBD8F0}
+.card li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:1.5px;background:var(--blue-400)}
+.card li:last-child{margin-bottom:0}
+
+/* ============================================================
+   SIGNATURE: concept -> result rail
+   ============================================================ */
+.rail{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:10px}
+.rail::before{
+  content:"";position:absolute;left:6%;right:6%;top:16px;height:1px;
+  background:linear-gradient(90deg,rgba(127,179,255,.15),var(--blue-400),var(--cyan-300));
+}
+.stage{position:relative;padding-top:52px}
+.stage .dot{
+  position:absolute;top:9px;left:0;width:15px;height:15px;border-radius:50%;
+  background:var(--navy-800);border:2px solid var(--blue-400);
+}
+.stage:last-child .dot{background:var(--cyan-300);border-color:var(--cyan-300);box-shadow:0 0 0 6px rgba(95,224,255,.14)}
+.stage h4{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:12px}
+.stage p{font-size:15.5px;color:#CBD8F0}
+.stage strong{color:#fff;font-weight:600}
+.case-title{font-size:22px;margin-bottom:8px}
+.case-kicker{font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-300);margin-bottom:34px}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.tl{border-top:1px solid rgba(127,179,255,.14)}
+.job{
+  display:grid;grid-template-columns:190px 1fr;gap:36px;padding:30px 0;
+  border-bottom:1px solid rgba(127,179,255,.14);
+}
+.job .when{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);letter-spacing:.04em;padding-top:4px}
+.job h3{font-size:18.5px;margin-bottom:4px}
+.job .org{font-size:14px;color:var(--blue-300);margin-bottom:14px;font-family:var(--f-mono);letter-spacing:.02em}
+.job li{position:relative;padding-left:20px;margin-bottom:9px;font-size:15px;color:#C3D1EB}
+.job li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:1.5px;background:var(--blue-400)}
+
+/* ============================================================
+   STRENGTHS + VALUES
+   ============================================================ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+.chip{
+  border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13.5px;color:#CBD8F0;
+  display:flex;align-items:baseline;gap:9px;transition:.22s;
+}
+.chip:hover{border-color:var(--blue-400);color:#fff}
+.chip i{font-family:var(--f-mono);font-style:normal;font-size:10.5px;color:var(--blue-300);letter-spacing:.1em}
+.val{padding:18px 0;border-bottom:1px solid rgba(127,179,255,.12)}
+.val:first-of-type{padding-top:0}
+.val h4{font-size:16px;margin-bottom:6px}
+.val p{font-size:14.8px;color:var(--muted)}
+
+/* ============================================================
+   LOOKING FOR
+   ============================================================ */
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.tag{
+  font-family:var(--f-display);font-size:14.5px;padding:10px 17px;border-radius:7px;
+  background:rgba(46,107,255,.12);border:1px solid rgba(46,107,255,.32);color:#DCE7FB;
+}
+.sub-note{margin-top:26px;font-size:14.5px;color:var(--muted)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{
+  border:1px solid rgba(127,179,255,.2);border-radius:16px;padding:52px;
+  background:radial-gradient(120% 160% at 0% 0%,rgba(46,107,255,.22),rgba(11,18,41,.4) 60%);
+}
+.contact h2{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.02em}
+.contact .slogan{color:var(--blue-300);font-family:var(--f-display);font-weight:600;font-size:18px;margin-bottom:18px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.cc{border:1px solid var(--line);border-radius:10px;padding:18px;text-decoration:none;display:block;transition:.22s;background:rgba(7,12,28,.35)}
+.cc:hover{border-color:var(--blue-400);background:rgba(46,107,255,.1)}
+.cc small{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.cc span{font-size:15px;color:#fff;word-break:break-word}
+
+footer{padding:46px 0 60px;border-top:1px solid rgba(127,179,255,.12);margin-top:80px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-family:var(--f-mono)}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--cyan-300);outline-offset:3px;border-radius:4px}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:960px){
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .portrait{max-width:300px;order:-1}
+  .metrics-in{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(3){border-left:0}
+  .grid-4,.two{grid-template-columns:1fr;gap:20px}
+  .two{gap:52px}
+  .job{grid-template-columns:1fr;gap:10px}
+  .contact-grid{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-template-columns:1fr;gap:32px}
+  .rail::before{left:7px;right:auto;top:8px;bottom:8px;width:1px;height:auto;
+    background:linear-gradient(180deg,rgba(127,179,255,.2),var(--cyan-300))}
+  .stage{padding-top:0;padding-left:38px}
+  .stage .dot{top:4px}
+  .nav-links{display:none}
+  section{padding:70px 0}
+  .contact{padding:32px}
+}
+@media (max-width:560px){
+  .metrics-in{grid-template-columns:1fr}
+  .metric{border-left:0;border-top:1px solid rgba(127,179,255,.12);padding:24px 0}
+  .metric:first-child{border-top:0}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================
+     NAV
+     ========================================================== -->
+<nav class="nav">
+  <div class="shell nav-in">
+    <a class="mark" href="#top">LIANA<span>SOLIMAN</span></a>
+    <div class="nav-links">
+      <a href="#profil" data-de="Profil" data-en="Profile">Profil</a>
+      <a href="#kompetenzen" data-de="Kompetenzen" data-en="Capabilities">Kompetenzen</a>
+      <a href="#case" data-de="Case" data-en="Case">Case</a>
+      <a href="#werdegang" data-de="Werdegang" data-en="Track record">Werdegang</a>
+      <a href="#persoenlichkeit" data-de="Persönlichkeit" data-en="Character">Persönlichkeit</a>
+      <a href="#kontakt" data-de="Kontakt" data-en="Contact">Kontakt</a>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ==========================================================
+     HERO
+     ========================================================== -->
+<header class="hero" id="top">
+  <div class="beams" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2E6BFF" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#070C1C" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5FE0FF" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#2E6BFF" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M-100,540 C240,300 420,150 900,-60 L1300,-60 L1300,-200 L-100,-200 Z" fill="url(#g1)"/>
+      <path d="M-100,470 C260,250 460,120 980,-90" stroke="url(#g2)" stroke-width="1.6" fill="none" opacity=".8"/>
+      <path d="M-100,540 C280,300 500,160 1020,-60" stroke="url(#g2)" stroke-width="1" fill="none" opacity=".5"/>
+      <path d="M-100,610 C300,350 540,200 1060,-30" stroke="url(#g2)" stroke-width=".8" fill="none" opacity=".3"/>
+    </svg>
+  </div>
+
+  <div class="shell hero-in">
+    <div>
+      <div class="eyebrow" data-de="Strategy · Growth · Technology" data-en="Strategy · Growth · Technology">Strategy · Growth · Technology</div>
+      <h1>
+        <span data-de="Strategie, die ankommt." data-en="Strategy that lands.">Strategie, die ankommt.</span><br>
+        <span class="accent" data-de="Execution, die wirkt." data-en="Execution that works.">Execution, die wirkt.</span>
+      </h1>
+      <p class="hero-sub"
+         data-de="Ich verbinde Technology Strategy mit Operating Execution: eigene Startup-Gründung mit Exit, 2,5 Jahre SaaS-Scale-up, MBA in Corporate Finance und Data Science. Über 60 Kundenmandate hinweg habe ich Empfehlungen nicht nur präsentiert, sondern bis zum messbaren Ergebnis begleitet."
+         data-en="I combine technology strategy with operating execution: a founded and exited startup, 2.5 years in a SaaS scale-up, an MBA in corporate finance and data science. Across 60+ client mandates I have not just presented recommendations, I have taken them through to a measurable result.">
+      </p>
+      <p class="hero-role"
+         data-de="Growth · Commercial Management · Corporate &amp; Business Development · Tech Consulting"
+         data-en="Growth · Commercial Management · Corporate &amp; Business Development · Tech Consulting"></p>
+      <div class="cta-row">
+        <!-- PLACEHOLDER: E-Mail wird aus dem CONTACT-Objekt unten im Script gesetzt -->
+        <a class="btn btn-primary" data-contact="mailto" href="#kontakt"
+           data-de="Tauschen wir uns aus" data-en="Let us talk">Tauschen wir uns aus</a>
+        <!-- PLACEHOLDER: CV-Datei -->
+        <a class="btn btn-ghost" data-contact="cv" href="#"
+           data-de="CV ansehen" data-en="View CV">CV ansehen</a>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER: Foto — Datei als photo.jpg neben index.html legen -->
+    <figure class="portrait" style="margin:0">
+      <div class="ph" data-de="FOTO<br>photo.jpg neben index.html<br>ablegen" data-en="PHOTO<br>place photo.jpg next to<br>index.html">FOTO<br>photo.jpg neben index.html<br>ablegen</div>
+    </figure>
+  </div>
+</header>
+
+<!-- ==========================================================
+     METRICS
+     ========================================================== -->
+<div class="metrics">
+  <div class="shell metrics-in">
+    <div class="metric"><b>60+</b><span data-de="Kundenmandate mit Rolling-Portfolio-Advisory" data-en="Client mandates in rolling portfolio advisory">Kundenmandate</span></div>
+    <div class="metric"><b>70%</b><span data-de="Adoption eines selbst entwickelten Consulting-Angebots" data-en="Adoption of a consulting offering I built myself">Adoption Rate</span></div>
+    <div class="metric"><b>+38%</b><span data-de="YoY Revenue durch Geschäftsmodell-Anpassung (ATUTOR)" data-en="YoY revenue through business model redesign (ATUTOR)">YoY Revenue</span></div>
+    <div class="metric"><b>5</b><span data-de="Arbeitssprachen: DE, EN, FR, AR, IT" data-en="Working languages: DE, EN, FR, AR, IT">Sprachen</span></div>
+  </div>
+</div>
+
+<!-- ==========================================================
+     PROFIL
+     ========================================================== -->
+<section id="profil">
+  <div class="shell reveal">
+    <div class="sec-head">
+      <h2 data-de="Profil" data-en="Profile">Profil</h2>
+      <div class="rule"></div>
+      <p class="lede"
+         data-de="Ich bringe Operating-Erfahrung dorthin, wo sonst vor allem Konzepte entstehen. Ich baue nicht nur Slides, sondern setze Strategien hands-on um — aus eigener Gründung, aus dem SaaS-Scale-up und mit der analytischen Rigorosität aus dem MBA."
+         data-en="I bring operating experience to places where concepts usually stop. I do not just build slides, I put strategy into practice, drawing on my own venture, on scale-up SaaS work, and on the analytical rigour of my MBA."></p>
+      <p class="lede"
+         data-de="Was mich antreibt: intellektuell fordernde Fragestellungen, Peers auf Augenhöhe und Umfelder, in denen schnelles analytisches Denken und Ergebnisse zählen. Ich reduziere Komplexität, schaffe Klarheit und begleite vom Konzept bis zum Ergebnis."
+         data-en="What drives me: intellectually demanding questions, peers at eye level, and environments where fast analytical thinking and results count. I reduce complexity, create clarity, and stay on board from concept to outcome."></p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     KERNKOMPETENZEN
+     ========================================================== -->
+<section id="kompetenzen" style="padding-top:0">
+  <div class="shell reveal">
+    <div class="sec-head">
+      <h2 data-de="Kernkompetenzen" data-en="Core capabilities">Kernkompetenzen</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="grid-4">
+      <article class="card">
+        <h3 data-de="Technology &amp; Operating Background" data-en="Technology &amp; operating background">Technology &amp; Operating Background</h3>
+        <ul>
+          <li data-de="Co-Founder &amp; CEO ATUTOR (EdTech SaaS): Produktentwicklung, Teamführung, strategischer Exit" data-en="Co-founder and CEO of ATUTOR (EdTech SaaS): product build, team leadership, strategic exit"></li>
+          <li data-de="Growth Specialist bei cptr (MarTech SaaS): GTM-Strategie, Partner-Ökosystem, Consultancy-Portfolio" data-en="Growth specialist at cptr (MarTech SaaS): GTM strategy, partner ecosystem, consultancy portfolio"></li>
+          <li data-de="Fundierte Praxis in SaaS-Metriken, Product-Market-Fit und Scaling-Dynamiken" data-en="Hands-on grounding in SaaS metrics, product-market fit and scaling dynamics"></li>
+          <li data-de="Machine-Learning-Framework-Evaluation im laufenden Produktivsystem (MLOps)" data-en="Machine learning framework evaluation inside a live production system (MLOps)"></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 data-de="Strategie &amp; Umsetzung" data-en="Strategy &amp; execution">Strategie &amp; Umsetzung</h3>
+        <ul>
+          <li data-de="70% Adoption Rate eines neuen Consultancy Offerings — Strategien, die tatsächlich umgesetzt werden" data-en="70% adoption of a new consultancy offering, proof that my strategies actually get implemented"></li>
+          <li data-de="Hands-on-Delivery: Analytics-Service, KPI-Frameworks, Implementierungsbegleitung" data-en="Hands-on delivery: analytics services, KPI frameworks, implementation support"></li>
+          <li data-de="Change Management: organisatorische Pivots und neue Service-Lines erfolgreich geführt" data-en="Change management: led organisational pivots and new service lines"></li>
+          <li data-de="Markteintritte, Positionierung und Pricing entlang belastbarer Marktanalysen" data-en="Market entry, positioning and pricing built on solid market analysis"></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 data-de="Finanzielle &amp; analytische Kompetenz" data-en="Financial &amp; analytical depth">Finanzielle &amp; analytische Kompetenz</h3>
+        <ul>
+          <li data-de="Financial Modeling: Investment Analysis, Valuation, Forecasting (MBA, Abschluss 1.3)" data-en="Financial modelling: investment analysis, valuation, forecasting (MBA, final grade 1.3)"></li>
+          <li data-de="Datengetriebene Frameworks: 60+ Analytics-Cases, KPI-Design, Performance Measurement" data-en="Data-driven frameworks: 60+ analytics cases, KPI design, performance measurement"></li>
+          <li data-de="Business Cases mit ROI-Logik als Grundlage für Investitions- und Make-or-Buy-Entscheide" data-en="Business cases with ROI logic as the basis for investment and make-or-buy decisions"></li>
+          <li data-de="M&amp;A-Delivery: Investor Relations, Due Diligence, Verkaufsprozess (ATUTOR Exit)" data-en="M&amp;A delivery: investor relations, due diligence, sale process (ATUTOR exit)"></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 data-de="Client Delivery" data-en="Client delivery">Client Delivery</h3>
+        <ul>
+          <li data-de="Executive Engagement mit C-Suite, Institutionen und Regierungsvertretern" data-en="Executive engagement with C-suite, institutions and government representatives"></li>
+          <li data-de="Cross-funktionale Workshop-Moderation, Scoping und Requirements Definition" data-en="Cross-functional workshop facilitation, scoping and requirements definition"></li>
+          <li data-de="Executive Storytelling: komplexe Analysen entscheidungsreif aufbereiten" data-en="Executive storytelling: turning complex analysis into decision-ready material"></li>
+          <li data-de="Verhandlungsführung und Mandatsarbeit in DE, EN, FR, AR, IT" data-en="Negotiation and mandate work in DE, EN, FR, AR, IT"></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     SIGNATURE CASE — concept to result rail
+     ========================================================== -->
+<section id="case" style="background:linear-gradient(180deg,rgba(16,26,58,.5),rgba(11,18,41,0))">
+  <div class="shell reveal">
+    <div class="sec-head" style="margin-bottom:20px">
+      <h2 data-de="Vom Konzept zum Ergebnis" data-en="From concept to result">Vom Konzept zum Ergebnis</h2>
+      <div class="rule"></div>
+      <p class="case-kicker" data-de="Case — Data Analytics Offering, B2B SaaS" data-en="Case — data analytics offering, B2B SaaS">Case — Data Analytics Offering, B2B SaaS</p>
+      <h3 class="case-title" data-de="Churn stoppen, bevor die grosse Lösung fertig ist" data-en="Stopping churn before the big fix was ready">Churn stoppen, bevor die grosse Lösung fertig ist</h3>
+    </div>
+
+    <div class="rail">
+      <div class="stage">
+        <span class="dot"></span>
+        <h4 data-de="Ausgangslage" data-en="Situation">Ausgangslage</h4>
+        <p data-de="Die Churn-Rate stieg kontinuierlich. Die Nutzungsdaten zeigten: Kunden konnten das Tool nicht eigenständig nutzen — lückenhaftes Wiki, unstrukturiertes Onboarding ohne KPIs. Der Onboarding Hub war geplant, aber wir brauchten sofort einen Hebel."
+           data-en="Churn was climbing steadily. Usage data showed clients could not run the tool on their own: a patchy wiki and unstructured onboarding without KPIs. The onboarding hub was planned, but we needed a lever immediately."></p>
+      </div>
+      <div class="stage">
+        <span class="dot"></span>
+        <h4 data-de="Mein Beitrag" data-en="What I did">Mein Beitrag</h4>
+        <p data-de="Ich entwickelte eigenständig ein Data Analytics Offer: Kunden erhalten proaktiv personalisierte Insights aus ihrem Account. Business Case mit ROI-Projektion aufgesetzt, das Team als Supporter gewonnen, das Angebot zur Marktreife gebracht und persönlich bei allen Bestandskunden gepitcht — obwohl die Kompetenz intern erst aufgebaut werden musste."
+           data-en="I designed a data analytics offer on my own initiative: clients receive personalised insights from their account instead of digging through the tool. I built the business case with an ROI projection, won the team over as supporters, took the offer to market readiness and pitched it personally to every existing client, even though the capability had to be built internally first."></p>
+      </div>
+      <div class="stage">
+        <span class="dot"></span>
+        <h4 data-de="Ergebnis" data-en="Result">Ergebnis</h4>
+        <p data-de="7 von 10 Bestandskunden buchten das Angebot — 70% Conversion. Es folgten Zusatzaufträge, das Angebot wurde fester Bestandteil des Portfolios und die Kundenbindung nachhaltig gestärkt."
+           data-en="Seven out of ten existing clients booked it, a 70% conversion rate. Follow-on mandates came in, the offer became a permanent part of the portfolio, and retention improved for good."></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     WERDEGANG
+     ========================================================== -->
+<section id="werdegang">
+  <div class="shell reveal">
+    <div class="sec-head">
+      <h2 data-de="Werdegang" data-en="Track record">Werdegang</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="tl">
+      <article class="job">
+        <div class="when">Jan 2023 – Okt 2025 · Zürich</div>
+        <div>
+          <h3 data-de="Growth Specialist &amp; Partner Manager" data-en="Growth specialist &amp; partner manager">Growth Specialist &amp; Partner Manager</h3>
+          <div class="org">cptr AG — MarTech SaaS</div>
+          <ul>
+            <li data-de="Cross-sektorale GTM- und Partner-Growth-Verantwortung für SaaS in Financial Services, Retail und Entertainment" data-en="Cross-sector GTM and partner growth ownership for SaaS across financial services, retail and entertainment"></li>
+            <li data-de="Rolling Portfolio von 60 Kunden mitbetreut: Roadmaps, Target Operating Models, KPI-Strukturen, Analytics-Umsetzung" data-en="Co-advised a rolling portfolio of 60 clients: roadmaps, target operating models, KPI structures, analytics delivery"></li>
+            <li data-de="Partner-Ökosystem aufgebaut: Sourcing, Verhandlung von SLAs und Commercial Terms, Onboarding, gemeinsame Delivery und Reviews" data-en="Built the partner ecosystem: sourcing, negotiating SLAs and commercial terms, onboarding, joint delivery and reviews"></li>
+            <li data-de="Nachfrage skaliert über Pitches, Webinare und Industry Showcases; Marktanalysen zur Anpassung der Vertriebsstrategie" data-en="Scaled demand through pitches, webinars and industry showcases; ran market scans to adjust sales strategy"></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">Mär 2022 – Dez 2022 · Zürich</div>
+        <div>
+          <h3 data-de="Co-Founder &amp; CEO" data-en="Co-founder &amp; CEO">Co-Founder &amp; CEO</h3>
+          <div class="org">ATUTOR — EdTech</div>
+          <ul>
+            <li data-de="Online-Tutoring-Plattform mit 200 Kunden und 60 Tutoren aufgebaut; Verantwortung für Growth, Strategie und Operations" data-en="Built an online tutoring platform with 200 clients and 60 tutors; owned growth, strategy and operations"></li>
+            <li data-de="+38% YoY Revenue durch Markt- und Wettbewerbsanalyse sowie Anpassung des Geschäftsmodells" data-en="+38% YoY revenue through market and competitor analysis and business model redesign"></li>
+            <li data-de="Finanzmodell und Plattform-Blueprint verantwortet; neue Produkte lanciert" data-en="Owned the financial model and platform blueprint; launched new products"></li>
+            <li data-de="Investor Relations und M&amp;A-Workstream geführt (VC-Pitching, Due Diligence); Übernahme durch Wettbewerber im Januar 2023" data-en="Led investor relations and the M&amp;A workstream (VC pitching, due diligence); acquired by a competitor in January 2023"></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">Sep 2021 – Feb 2022 · Dubai</div>
+        <div>
+          <h3 data-de="Guest Relations Specialist" data-en="Guest relations specialist">Guest Relations Specialist</h3>
+          <div class="org" data-de="EDA — Schweizer Pavillon, World Expo" data-en="FDFA — Swiss Pavilion, World Expo">EDA — Schweizer Pavillon, World Expo</div>
+          <ul>
+            <li data-de="Briefings in DE, EN, FR und AR für königliche, staatliche und wirtschaftliche Delegationen" data-en="Briefings in DE, EN, FR and AR for royal, government and business delegations"></li>
+            <li data-de="Schweizer Innovation repräsentiert und internationale Beziehungen gepflegt" data-en="Represented Swiss innovation and cultivated international relations"></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">Jul 2020 – Sep 2021 · Zürich</div>
+        <div>
+          <h3 data-de="Marketing &amp; Communications Intern" data-en="Marketing &amp; communications intern">Marketing &amp; Communications Intern</h3>
+          <div class="org">OneDoc — HealthTech SaaS</div>
+          <ul>
+            <li data-de="Nationale Berichterstattung in NZZ, Tages-Anzeiger und SRF gesichert; deutschsprachige Audience um über 600% skaliert" data-en="Secured national coverage in NZZ, Tages-Anzeiger and SRF; scaled the German-speaking audience by over 600%"></li>
+            <li data-de="Datengetriebene Lead-Generierung aufgebaut (A/B-Testing, CRM-Workflows) mit CHF 5'000 zusätzlichem MRR" data-en="Built a data-driven lead generation engine (A/B testing, CRM workflows) adding CHF 5,000 in MRR"></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">2018 – 2026</div>
+        <div>
+          <h3 data-de="Ausbildung" data-en="Education">Ausbildung</h3>
+          <div class="org">IU International University · ZHAW</div>
+          <ul>
+            <li data-de="MBA Finance/Economics &amp; Data Science, IU International University (2023–2026): Strategic Management, Corporate Finance, Investment Analysis, Data Science &amp; Analytics, Performance Measurement" data-en="MBA in finance/economics and data science, IU International University (2023–2026): strategic management, corporate finance, investment analysis, data science and analytics, performance measurement"></li>
+            <li data-de="BA Applied Languages &amp; Multilingual Communication, ZHAW (2018–2021)" data-en="BA in applied languages and multilingual communication, ZHAW (2018–2021)"></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     PERSÖNLICHKEIT
+     ========================================================== -->
+<section id="persoenlichkeit">
+  <div class="shell reveal">
+    <div class="sec-head">
+      <h2 data-de="Wie ich arbeite" data-en="How I work">Wie ich arbeite</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="two">
+      <div>
+        <h3 style="font-size:18px;margin-bottom:6px" data-de="Charakterstärken" data-en="Character strengths">Charakterstärken</h3>
+        <p style="font-size:14.5px;color:var(--muted);margin-bottom:16px"
+           data-de="Top-Signaturstärken aus dem VIA Character Strengths Profile — sie erklären, warum ich in mehrdeutigen, schnellen Umfeldern aufblühe."
+           data-en="Top signature strengths from the VIA Character Strengths Profile. They explain why I do my best work in fast, ambiguous environments."></p>
+        <div class="chips">
+          <span class="chip"><i>01</i><span data-de="Kreativität" data-en="Creativity">Kreativität</span></span>
+          <span class="chip"><i>02</i><span data-de="Lernfreude" data-en="Love of learning">Lernfreude</span></span>
+          <span class="chip"><i>03</i><span data-de="Neugier" data-en="Curiosity">Neugier</span></span>
+          <span class="chip"><i>04</i><span data-de="Urteilsvermögen" data-en="Judgment">Urteilsvermögen</span></span>
+          <span class="chip"><i>05</i><span data-de="Mut" data-en="Bravery">Mut</span></span>
+          <span class="chip"><i>06</i><span data-de="Soziale Intelligenz" data-en="Social intelligence">Soziale Intelligenz</span></span>
+          <span class="chip"><i>07</i><span data-de="Aufrichtigkeit" data-en="Honesty">Aufrichtigkeit</span></span>
+          <span class="chip"><i>08</i><span data-de="Humor" data-en="Humour">Humor</span></span>
+          <span class="chip"><i>09</i><span data-de="Weitsicht" data-en="Perspective">Weitsicht</span></span>
+          <span class="chip"><i>10</i><span data-de="Leadership" data-en="Leadership">Leadership</span></span>
+        </div>
+        <p class="sub-note"
+           data-de="Aus dem Arbeitszeugnis: findet sich in neuen Aufgaben bemerkenswert schnell zurecht, kommuniziert strategisch über viele Hierarchieebenen hinweg und begeistert die Beteiligten für die gemeinsame Zielerreichung."
+           data-en="From my reference letter: gets to grips with new tasks remarkably fast, communicates strategically across many hierarchy levels, and gets everyone involved excited about the shared goal."></p>
+      </div>
+
+      <div>
+        <h3 style="font-size:18px;margin-bottom:18px" data-de="Meine Werte" data-en="My values">Meine Werte</h3>
+        <div class="val">
+          <h4 data-de="Lösungsorientierung" data-en="Resourcefulness">Lösungsorientierung</h4>
+          <p data-de="Wenn es ein Problem gibt, gibt es einen Weg. Ich blockiere nicht an Hindernissen, sondern iteriere — bei ATUTOR bis zu +38% Revenue, bei cptr bis zum neuen Angebot mit 70% Adoption."
+             data-en="If there is a problem, there is a way through. I do not stall at obstacles, I iterate: at ATUTOR that meant +38% revenue, at cptr a new offering with 70% adoption."></p>
+        </div>
+        <div class="val">
+          <h4 data-de="Wachstum &amp; Lernen" data-en="Growth &amp; learning">Wachstum &amp; Lernen</h4>
+          <p data-de="Berufsbegleitender MBA neben Vollzeitjob, fünf Sprachen, bewusster Tech-Fokus. Ich investiere in meine Entwicklung, bevor der Markt es erzwingt."
+             data-en="An MBA alongside a full-time job, five languages, a deliberate move into tech. I invest in my development before the market forces it."></p>
+        </div>
+        <div class="val">
+          <h4 data-de="Brücken bauen" data-en="Building bridges">Brücken bauen</h4>
+          <p data-de="Über Sprachen, Kulturen und Hierarchien hinweg. Stakeholder sind für mich Teil der Lösung, nicht das Hindernis — vom Partner-Ökosystem bis zu Delegationen am World Expo."
+             data-en="Across languages, cultures and hierarchies. Stakeholders are part of the solution, not the obstacle, from partner ecosystems to delegations at the World Expo."></p>
+        </div>
+        <div class="val" style="border-bottom:0">
+          <h4 data-de="Tatkraft" data-en="Initiative">Tatkraft</h4>
+          <p data-de="Ich ergreife Initiative, bevor jemand fragt. Ich sehe Chancen und handle, statt auf Erlaubnis zu warten."
+             data-en="I take initiative before anyone asks. I see the opening and act instead of waiting for permission."></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     WONACH ICH SUCHE
+     ========================================================== -->
+<section id="suche" style="padding-top:0">
+  <div class="shell reveal">
+    <div class="sec-head">
+      <h2 data-de="Wonach ich suche" data-en="What I am looking for">Wonach ich suche</h2>
+      <div class="rule"></div>
+      <p class="lede"
+         data-de="Rollen an der Schnittstelle von Business und Technologie — dort, wo Analyse, Kundenkontakt und Umsetzung zusammenkommen."
+         data-en="Roles at the intersection of business and technology, where analysis, client contact and execution meet."></p>
+    </div>
+    <div class="tags">
+      <span class="tag">Growth</span>
+      <span class="tag">Commercial Management</span>
+      <span class="tag">Corporate Development</span>
+      <span class="tag">Business Development</span>
+      <span class="tag">Strategy &amp; Tech Consulting</span>
+      <span class="tag">Partner Management</span>
+      <span class="tag">Corporate Finance &amp; Investment</span>
+    </div>
+    <p class="sub-note"
+       data-de="Projekttypen: Growth &amp; Market Strategy · Digital Transformation · GTM &amp; Pricing · Strategic Partnerships · Financial &amp; Business Analysis · Data Analytics &amp; Performance Measurement"
+       data-en="Project types: growth and market strategy · digital transformation · GTM and pricing · strategic partnerships · financial and business analysis · data analytics and performance measurement"></p>
+    <p class="sub-note" style="margin-top:8px"
+       data-de="Branchen: Finance · Automotive · Tourism · Healthcare · EdTech · Retail · Public Sector"
+       data-en="Industries: finance · automotive · tourism · healthcare · EdTech · retail · public sector"></p>
+  </div>
+</section>
+
+<!-- ==========================================================
+     KONTAKT
+     ========================================================== -->
+<section id="kontakt" style="padding-top:0">
+  <div class="shell reveal">
+    <div class="contact">
+      <p class="slogan" data-de="Strategie, die ankommt. Execution, die wirkt." data-en="Strategy that lands. Execution that works.">Strategie, die ankommt. Execution, die wirkt.</p>
+      <h2 data-de="Könnte das ein Match sein?" data-en="Could this be a match?">Könnte das ein Match sein?</h2>
+      <p class="lede" style="margin-top:16px"
+         data-de="Ich freue mich über ein Gespräch — zu offenen Rollen, konkreten Mandaten oder einfach zum Austausch."
+         data-en="I am glad to talk, whether about an open role, a concrete mandate, or simply to exchange notes."></p>
+
+      <!-- PLACEHOLDERS: Werte unten im Script im CONTACT-Objekt eintragen -->
+      <div class="contact-grid">
+        <a class="cc" data-contact="mail" href="#"><small>E-Mail</small><span></span></a>
+        <a class="cc" data-contact="phone" href="#"><small data-de="Telefon" data-en="Phone">Telefon</small><span></span></a>
+        <a class="cc" data-contact="linkedin" href="#"><small>LinkedIn</small><span></span></a>
+        <a class="cc" data-contact="location" href="#"><small data-de="Standort" data-en="Location">Standort</small><span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell foot">
+    <span data-contact="footername">LIA SOL</span>
+    <span data-de="Zürich, Schweiz · offen für Mandate und Festanstellung" data-en="Zurich, Switzerland · open to mandates and permanent roles">Zürich, Schweiz</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1. HIER DEINE DATEN EINTRAGEN / EDIT YOUR DETAILS HERE
+   ============================================================ */
+const CONTACT = {
+  name:     "Liana Soliman",                       // Vor- und Nachname
+  mail:     "vorname.nachname@example.com",  // PLACEHOLDER
+  phone:    "+41 00 000 00 00",              // PLACEHOLDER
+  linkedin: "linkedin.com/in/DEIN-PROFIL",   // PLACEHOLDER (ohne https://)
+  location: "Zürich, Schweiz",               // PLACEHOLDER
+  cv:       "cv.pdf",                        // PLACEHOLDER: PDF neben index.html legen
+  photo:    "photo.jpg"                      // PLACEHOLDER: Bild neben index.html legen
+};
+
+/* ============================================================
+   2. Ab hier ist nichts mehr zu ändern
+   ============================================================ */
+
+// Kontaktdaten einsetzen
+(function fillContact(){
+  const set = (sel, text, href) => {
+    document.querySelectorAll('[data-contact="'+sel+'"]').forEach(el=>{
+      const target = el.querySelector('span') || el;
+      if(text !== null) target.textContent = text;
+      if(href) el.setAttribute('href', href);
+    });
+  };
+  set('mail', CONTACT.mail, 'mailto:'+CONTACT.mail);
+  set('phone', CONTACT.phone, 'tel:'+CONTACT.phone.replace(/\s/g,''));
+  set('linkedin', CONTACT.linkedin, 'https://'+CONTACT.linkedin.replace(/^https?:\/\//,''));
+  set('location', CONTACT.location, null);
+  set('footername', CONTACT.name.toUpperCase(), null);
+  document.querySelectorAll('[data-contact="mailto"]').forEach(el=>el.setAttribute('href','mailto:'+CONTACT.mail));
+  document.querySelectorAll('[data-contact="cv"]').forEach(el=>{el.setAttribute('href',CONTACT.cv);el.setAttribute('target','_blank');el.setAttribute('rel','noopener')});
+
+  // Foto laden, falls vorhanden — sonst bleibt der Platzhalter stehen
+  const fig = document.querySelector('.portrait');
+  if(fig && CONTACT.photo){
+    const img = new Image();
+    img.onload = () => { fig.innerHTML = ''; img.alt = CONTACT.name; fig.appendChild(img); };
+    img.src = CONTACT.photo;
+  }
+})();
+
+// Sprachumschaltung
+(function language(){
+  const buttons = document.querySelectorAll('.lang button');
+  const apply = lang => {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val = el.getAttribute('data-'+lang);
+      if(val.includes('<br>')) el.innerHTML = val;
+      else el.textContent = val.replace(/&amp;/g,'&');
+    });
+    buttons.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  };
+  buttons.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+  apply((navigator.language||'de').toLowerCase().startsWith('de') ? 'de' : 'en');
+})();
+
+// Scroll-Reveal
+(function reveal(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
